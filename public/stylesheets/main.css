@@ -1,0 +1,492 @@
+/* Home page css */
+#h1 {
+	font: italic small-caps bold 45px cursive;
+	color: #32cdcd;
+	text-align: center;
+	width: 100%;
+	position: relative;
+	top: 0;
+}
+
+.background {
+	position: relative;
+	text-align: center;
+	color: white;
+	width: 100%;
+	height: auto;
+}
+
+.picture1 {
+	width: 80%;
+	height: auto;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	margin-left: 5%;
+	margin-right: 5%;
+	position: relative;
+	top: 10%;
+	filter: brightness(80%);
+}
+
+/*login and signup buttons*/
+#buttons {
+	position: fixed;
+	top: 0;
+	right: 2%;
+}
+/* Bounce To Bottom */
+.hvr-bounce-to-bottom {
+	display: inline-block;
+	vertical-align: middle;
+	-webkit-transform: perspective(1px) translateZ(0);
+	transform: perspective(1px) translateZ(0);
+	box-shadow: 0 0 1px transparent;
+	position: relative;
+	-webkit-transition-property: color;
+	transition-property: color;
+	-webkit-transition-duration: 0.5s;
+	transition-duration: 0.5s;
+}
+
+.hvr-bounce-to-bottom:before {
+	content: "";
+	position: absolute;
+	z-index: -1;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: #e60073;
+	-webkit-transform: scaleY(0);
+	transform: scaleY(0);
+	-webkit-transform-origin: 50% 0;
+	transform-origin: 50% 0;
+	-webkit-transition-property: transform;
+	transition-property: transform;
+	-webkit-transition-duration: 0.5s;
+	transition-duration: 0.5s;
+	-webkit-transition-timing-function: ease-out;
+	transition-timing-function: ease-out;
+}
+
+.hvr-bounce-to-bottom:hover, .hvr-bounce-to-bottom:focus,
+	.hvr-bounce-to-bottom:active {
+	color: white;
+}
+
+.hvr-bounce-to-bottom:hover:before, .hvr-bounce-to-bottom:focus:before,
+	.hvr-bounce-to-bottom:active:before {
+	-webkit-transform: scaleY(1);
+	transform: scaleY(1);
+	-webkit-transition-timing-function: cubic-bezier(0.52, 1.64, 0.37, 0.66);
+	transition-timing-function: cubic-bezier(0.52, 1.64, 0.37, 0.66);
+}
+/*--------------------LOGIN CSS---------------------------*/
+input[type=text], input[type=password], input[type=email] {
+	width: 90%;
+	padding: 2% 4%;
+	margin: 8px 2%;
+	display: inline-block;
+	border: 1px solid #ccc;
+	box-sizing: border-box;
+}
+
+#login {
+	display: block;
+	background-color: #32cdcd;
+	color: white;
+	padding: 14px 25.5px;
+	margin: 8px 0;
+	border: none;
+	cursor: pointer;
+	width: 100%;
+	font-family: 'Acme';
+	font-size: 12px;
+}
+
+/* Extra styles for the cancel button */
+.cancelbtn {
+	width: auto;
+	padding: 10px 18px;
+	background-color: red;
+	color: white;
+	border: none;
+	font-family: 'Acme';
+}
+
+.cancelbtn:hover {
+	opacity: 0.8;
+}
+
+#submit {
+	width: auto;
+	padding: 10px 18px;
+	margin-top: 10px;
+	background-color: #32cdcd;
+	color: white;
+	border: none;
+	font-family: 'Acme';
+}
+
+#submit:hover {
+	opacity: 0.8;
+}
+
+.imgcontainer {
+	text-align: center;
+	margin: 24px 0 12px 0;
+	position: relative;
+}
+
+img.avatar {
+	margin-top: 5%;
+	height: 20%;
+	width: 20%;
+	border-radius: 50%;
+}
+
+.container {
+	padding: 16px;
+	width: 100%;
+}
+
+.container label b {
+	margin-left: 2%;
+}
+
+.cb {
+	margin-left: 2%;
+}
+
+.tab {
+	margin-left: 2%;
+}
+
+#requirement {
+	color: red;
+	margin-left: 2%;
+	font-weight: bold;
+	font-family: 'Acme';
+}
+
+span.forgot {
+	color: purple;
+	text-align: right;
+	padding-top: 16px;
+	font-family: 'Acme';
+	cursor: pointer;
+}
+
+/* The Modal (background) */
+.modal {
+	display: none;
+	position: fixed;
+	z-index: 1;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	overflow: auto;
+	background-color: rgb(0, 0, 0);
+	background-color: rgba(0, 0, 0, 0.4);
+	padding-top: 60px;
+}
+
+.modal-content {
+	font-family: 'Acme';
+	background-color: #fefefe;
+	margin: 4% auto 10% auto;
+	border: 1px solid #888;
+	width: 40%;
+	position: relative;
+}
+
+.close {
+	position: absolute;
+	color: #000;
+	top: 0;
+	right: 20px;
+	font-size: 35px;
+	font-weight: bold;
+}
+
+.close:hover, .close:focus {
+	color: red;
+	cursor: pointer;
+}
+
+/* Add Zoom Animation */
+.animate {
+	-webkit-animation: animatezoom 0.6s;
+	animation: animatezoom 0.6s
+}
+
+@
+-webkit-keyframes animatezoom {
+	from {-webkit-transform: scale(0)
+}
+
+to {
+	-webkit-transform: scale(1)
+}
+
+}
+@
+keyframes animatezoom {
+	from {transform: scale(0)
+}
+
+to {
+	transform: scale(1)
+}
+
+}
+/*----------------------------------------------------------------------*/
+
+/*-----------------------------sign up css------------------------------*/
+#signup {
+	display: block;
+	background-color: #32cdcd;
+	color: white;
+	padding: 14px 20px;
+	margin: 8px 0;
+	border: none;
+	cursor: pointer;
+	font-family: 'Acme';
+	font-size: 12px;
+}
+/*----------------------------------------------------------------------*/
+
+/*---------------------------------menu css-----------------------------*/
+.overlay {
+	height: 100%;
+	width: 0;
+	position: fixed;
+	z-index: 1;
+	left: 0;
+	top: 0;
+	background-color: #adebeb;
+	overflow-x: hidden;
+	transition: 0.5s;
+}
+
+.overlay-content {
+	position: relative;
+	left: 36.5%;
+	float: center;
+	top: 25%;
+	width: 20%;
+	text-align: center;
+	margin-top: 30px;
+}
+
+.overlay-content a {
+	padding: 8px;
+	text-decoration: none;
+	font-size: 36px;
+	font-family: 'Acme';
+	color: #248f8f;
+	display: block;
+	vertical-align: middle;
+	-webkit-transform: perspective(1px) translateZ(0);
+	transform: perspective(1px) translateZ(0);
+	box-shadow: 0 0 1px transparent;
+	-webkit-transition-duration: 0.3s;
+	transition-duration: 0.3s;
+	-webkit-transition-property: box-shadow, transform;
+	transition-property: box-shadow, transform;
+}
+
+.overlay-content a:hover, .overlay a:focus, .overlay a:active {
+	color: white;
+	box-shadow: 0 10px 10px -10px rgba(0, 0, 0, 0.5);
+	-webkit-transform: scale(1.1);
+	transform: scale(1.1);
+}
+
+.overlay .closebtn {
+	position: fixed;
+	top: 0px;
+	left: 20px;
+	font-size: 40px;
+	display: none;
+	padding: 8px;
+	text-decoration: none;
+	font-size: 36px;
+	font-family: 'Acme';
+	color: #248f8f;
+	transition: 0.3s;
+}
+
+.overlay .closebtn:hover {
+	color: white;
+}
+
+.button {
+	border-radius: 4px;
+	background-color: transparent;
+	border: none;
+	color: #32cdcd;
+	text-align: center;
+	font-size: 30px;
+	font-weight: bold;
+	font-family: "Acme";
+	font-variant: small-caps;
+	padding: 10px;
+	width: 150px;
+	transition: all 0.5s;
+	cursor: pointer;
+	margin: 5px;
+	position: fixed;
+	top: 0;
+	left: 10px;
+}
+
+.button span {
+	cursor: pointer;
+	display: inline-block;
+	position: relative;
+	transition: 0.5s;
+}
+
+.button span:after {
+	content: '\00bb';
+	position: absolute;
+	opacity: 0;
+	top: 0;
+	right: -20px;
+	transition: 0.5s;
+}
+
+.button:hover span {
+	padding-right: 25px;
+}
+
+.button:hover span:after {
+	opacity: 1;
+	right: 0;
+}
+/*--------------------------------------------------------------*/
+
+/*--------user sign*------*/
+#personimage {
+	display: none;
+	position: fixed;
+	top: 1%;
+	right: 3%;
+	height: 58px;
+	width: 58px;
+	float: right;
+}
+
+#logout {
+	border-radius: 100px;
+	display: none;
+	position: fixed;
+	top: 2%;
+	right: 3%;
+	height: 58px;
+	width: 58px;
+	float: right;
+	background-color: #32cdcd;
+	color: white;
+	font-family: 'Acme';
+	font-weight: bold;
+	cursor: pointer;
+}
+
+/*----------------*/
+
+/*--------snackbar----------*/
+#snackbar {
+	visibility: hidden;
+	width: 20%;
+	margin-left: 40%;
+	margin-right: 40%;
+	background-color: #333;
+	color: #fff;
+	text-align: center;
+	border-radius: 2px;
+	padding: 2%;
+	position: fixed;
+	z-index: 1;
+	bottom: 60%;
+	font-size: 17px;
+}
+
+#snackbar.show {
+	visibility: visible;
+	-webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+	animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+@
+-webkit-keyframes fadein {
+	from {bottom: 0;
+	opacity: 0;
+}
+
+to {
+	bottom: 60%;
+	opacity: 1;
+}
+
+}
+@
+keyframes fadein {
+	from {bottom: 0;
+	opacity: 0;
+}
+
+to {
+	bottom: 60%;
+	opacity: 1;
+}
+
+}
+@
+-webkit-keyframes fadeout {
+	from {bottom: 60%;
+	opacity: 1;
+}
+
+to {
+	bottom: 0;
+	opacity: 0;
+}
+
+}
+@
+keyframes fadeout {
+	from {bottom: 60%;
+	opacity: 1;
+}
+
+to {
+	bottom: 0;
+	opacity: 0;
+}
+
+}
+/*--------------------------*/
+h2 {
+	font-size: 40px;
+}
+
+h4 {
+	font-size: 30px;
+	font-weight: bold;
+	font-family: 'Acme';
+}
+
+body {
+	width: 100%;
+	height: 100%;
+	background-color: white;
+	/*pinky:pink;/*green:#cae4db;/*sky:#caebf2;/*gray:#d5d5d5;/*sun:#dcd0c0 paper:#f4f4f4;*/
+}
+
+#warning {
+	display: none;
+}

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Main Page</title>
+<link href='https://fonts.googleapis.com/css?family=Acme'
+	rel='stylesheet'>
+<link href='https://fonts.googleapis.com/css?family=Bahiana'
+	rel='stylesheet'>
+<link href='https://fonts.googleapis.com/css?family=Cousine'
+	rel='stylesheet'>
+<link rel="stylesheet" href="stylesheets/main.css">
+<script src="javascripts/jquery.js"></script>
+<script type="text/javascript"
+	src="https://www.gstatic.com/charts/loader.js"></script>
+<script src="javascripts/main.js"></script>
+</head>
+<body onload="JQUERY.checkLogin()">
+	<div class="background">
+		<header>
+			<img src="images/graph1.jpg" class="picture1" alt="Picture missing">
+			<h1 id="h1">WikiLatic</h1>
+
+		</header>
+
+	</div>
+	<div id="buttons">
+		<button id="login" class="hvr-bounce-to-bottom">Login</button>
+		<button id="signup" class="hvr-bounce-to-bottom">Sign Up</button>
+	</div>
+	<!--Login function-->
+
+	<div id="log" class="modal">
+
+		<form action="/login" method="post" id="in-form" name="login-form"
+			class="modal-content animate">
+			<div class="imgcontainer">
+				<span id="in-cl" class="close" title="Close Modal">&times;</span> <br>
+				<img src="images/profile.png" alt="Avatar" class="avatar">
+			</div>
+
+			<div class="container">
+				<label><b>Username</b></label> <input type="text"
+					placeholder="Enter Username" name="uname" id="in-usn" required><br>
+
+				<label><b>Password</b></label> <input type="password"
+					placeholder="Enter Password" name="psw" id="in-pw" required><br>
+				<input type="checkbox" class="cb" onclick="JQUERY.showPW('#in-pw')">Show
+				Password&nbsp;&nbsp; <span class="forgot"><a
+					onclick="JQUERY.showAlert('Please contact our staff<br>to retrieve your password!')">Forgot
+						password?</a></span><br>
+				<div class="tab">
+					<input type="submit" value="Login" id="submit" />
+					<button type="button" id="in-cc" class="cancelbtn">Cancel</button>
+				</div>
+			</div>
+
+		</form>
+	</div>
+	<!--END OF LOGIN-->
+
+	<!---  SIGNUP FORM   -->
+
+	<div id="sign" class="modal">
+
+		<form id="up-form" name="signup-form" class="modal-content animate"
+			action="/signup" method="post">
+			<div class="imgcontainer">
+				<span id="up-cl" class="close" title="Close Modal">&times;</span>
+			</div>
+			<br>
+			<br>
+			<div class="container">
+				<label><b>First Name</b></label> <input type="text"
+					placeholder="Enter First Name" id="up-fn" name="upfn" required /><br>
+
+				<label><b>Last Name</b></label> <input type="text"
+					placeholder="Enter Last Name" id="up-ln" name="upln" required /><br>
+
+				<label><b>Username</b></label> <input type="text"
+					placeholder="Enter Username" id="up-usn" name="upusn" required /><br>
+
+				<label><b>E-mail Address</b></label> <input type="email"
+					placeholder="E-mail Address" id="up-em" name="upem" required /><br>
+
+				<label><b>Password</b></label>
+				<p id="requirement">
+					At least one lower case letter,<br>one upper case letter,<br>at
+					least one number<br>and at least eight characters long.
+				</p>
+				<input type="password" placeholder="Enter Password" id="up-pw"
+					name="uppw" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required /><br>
+
+				<label><b>Confirm Password</b></label> <input type="password"
+					placeholder="Re-enter Password" id="up-repw" name="uprepw" required /><br>
+				<input type="checkbox" class="cb"
+					onclick="JQUERY.showPW('#up-pw');JQUERY.showPW('#up-repw')">Show
+				Password&nbsp;&nbsp;<br>
+				<div class="tab">
+
+					<input type="submit" id="submit" value="Sign Up">
+					</button>
+					<button type="button" id="up-cc" class="cancelbtn">Cancel</button>
+				</div>
+
+			</div>
+		</form>
+	</div>
+
+	<!--END OF SIGNUP FORM-->
+
+	<!--User logo-->
+	<div class="popupimage" onmouseover="JQUERY.display()">
+		<img src="images/user.svg" id="personimage">
+		<form method="get" action="/logout">
+			<input type="submit" value="Log out" id="logout"
+				onmouseout="JQUERY.showIm()" />
+		</form>
+	</div>
+	<!---      END       -->
+
+
+	<!--Snackbar-->
+	<div id="snackbar"></div>
+	<!--THIS IS THE MENU!-->
+	<div id="navi" class="overlay">
+		<a href="javascript:void(0)" style="" id="close" class="closebtn">&times;</a>
+		<div class="overlay-content">
+			<a href="/">HOME</a> <a href="/revision">Revision</a>
+		</div>
+	</div>
+	<button class="button" id="menu">
+		<span>Menu</span>
+	</button>
+	<!--END OF MENU-->
+	<p id="warning"><%if(warning!=undefined){%><%=warning%><%}%></p>
+	<script>
+		if($("#warning").html().length!=0){
+			JQUERY.showAlert($("#warning").html());
+		}
+	</script>
+</body>
+</html>

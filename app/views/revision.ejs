@@ -1,0 +1,215 @@
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Revision</title>
+<link href='https://fonts.googleapis.com/css?family=Acme'
+	rel='stylesheet'>
+<link href='https://fonts.googleapis.com/css?family=Bahiana'
+	rel='stylesheet'>
+<link href='https://fonts.googleapis.com/css?family=Cousine'
+	rel='stylesheet'>
+<link rel="stylesheet" href="stylesheets/revision.css">
+<script src="javascripts/jquery.js"></script>
+<script type="text/javascript"
+	src="https://www.gstatic.com/charts/loader.js"></script>
+<script src="javascripts/main.js"></script>
+</head>
+<body onload="JQUERY.checkLogin()"">
+	<br>
+	<br>
+	<br>
+	<br>
+	<hr>
+	<h2>Overall Analysis</h2>
+	<%if(overall!=undefined && overall["most"]!=undefined){%>
+	<p>Top <%=overall["most"].length%> article(s) with highest number
+		of revisions is(are): <%for(let i = 0; i < overall["most"].length;
+		i++){%> <%if(i!=overall["most"].length-1){%> <%=overall["most"][i]%>,
+		<%} else {%> <%=overall["most"][i]%> <%}%> <%}%></p>
+	<%}%> <%if(overall!=undefined && overall["least"]!=undefined){%>
+	<p>Top <%=overall["least"].length%> article(s) with lowest number
+		of revisions is(are): <%for(let i = 0; i < overall["least"].length;
+		i++){%> <%if(i!=overall["least"].length-1){%>
+		<%=overall["least"][i]%>, <%} else {%> <%=overall["least"][i]%> <%}%>
+		<%}%></p>
+	<%}%>
+	<form method="get" action="/changeRevision">
+		<label>Number of articles with highest revisions and lowest
+			revisions to display: </label> <input type="number" name="number" min="1" />
+		<input type="submit" value="Change" />
+	</form>
+	<br>
+	<!--group-->
+	<%if(overall!=undefined && overall["largest"]!=undefined && overall["smallest"]!=undefined){%>
+	<p>The article edited by largest group of registered users is: <%=overall["largest"]%></p>
+	<p>The article edited by smallest group of registered users is: <%=overall["smallest"]%></p>
+	<%}%>
+
+
+	
+	<br>
+	<!--history-->
+
+	<%if(overall!=undefined && overall["longest"]!=undefined && overall["shortest"]!=undefined){%>
+	<% let count = 0; %>
+	<p>Top 3 articles with the longest history: 
+	<% for(let i = 0; i < overall["longest"].length; i++){ %>
+		<% if(count != overall["longest"].length-1){ %>
+			<%=overall["longest"][i]%>,
+		<%} else { %>
+			<%=overall["longest"][i]%>
+		<%}%>
+	<%}%></p>
+	<p>Top 3 articles with the shortest history:
+	<% for(let i = 0; i < overall["shortest"].length; i++){ %>
+		<% if(count != overall["shortest"].length-1){ %>
+			<%=overall["shortest"][i]%>,
+		<%} else { %>
+			<%=overall["shortest"][i]%>
+		<%}%>
+	<%}%></p>
+	<%}%>
+	
+	<!--history-->
+	
+		<br>
+	
+		Select Chart to display:
+		<select id="overallchart">
+			<option value="0">Bar Chart</option>
+			<option value="1">Pie Chart</option>
+		</select>
+		<button onclick="javascript:JQUERY.displayOverallChart()">Display</button>
+	<br><br>
+	<div id="overall"></div>
+	
+	<hr>
+
+	<!--indianaly--title search-->
+	<h2>Individual Analysis</h2>
+	<% if(titles!=undefined && titles["titles"]!=undefined){%>
+	<form method="get" action="/articledata">
+		<label>Title | Revision Count</label> 
+		<select name="title">
+			<%for(let i = 0; i < titles["titles"].length; i++){%>
+			<option><%=titles["titles"][i]._id%> |
+				<%=titles["titles"][i].count%></option> <%}%>
+		</select> 
+		
+		<input list="titledata" name="titlename" > 
+		<datalist id="titledata">
+			<%for(let i = 0; i < titles["titles"].length; i++){%>
+			<option value="<%=titles['titles'][i]._id%>">
+			<%}%>
+		</datalist>
+		<input type="submit" />
+	</form>
+	<%}%> 
+	<% if(titles!=undefined && titles["articledata"]!=undefined){%>
+	<table>
+		<thead>
+			<tr>
+				<th>Book Title</th>
+				<th>Revision Times</th>
+				<th>Top Five Users(revision numbers)</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td id="t" rowspan=5><%=titles["articledata"]["title"]%></td>
+				<td rowspan=5><%=titles["articledata"]["count"]%></td> 
+				<% let count = 0;%>
+				 <% for(let key in titles["articledata"]["top"]){ 
+				 if(count == 0){%>
+				<td><%=key%>(<%=titles["articledata"]["top"][key]%>)<input type="checkbox" name="topuser" value='<%=key%>'/></td>
+				</tr>
+				<%}else{%>
+				<tr>
+					<td><%=key%>(<%=titles["articledata"]["top"][key]%>)<input type="checkbox" name="topuser" value='<%=key%>'/></td></td>
+				</tr>
+				<%}%> 
+				<%count++;%> 
+				<%}%>
+
+		</tbody>
+	</table>
+	<%}%>
+	<br>
+		Select Chart to display:
+		<select id="individualchart">
+			<option value="0">Bar Chart For Article</option>
+			<option value="1">Pie Chart For Article</option>
+			<option value="2">Bar Chart For Top Users</option>
+		</select>
+		<button onclick="javascript:JQUERY.displayIndividualChart()">Display</button>
+	<br>
+	<div id="individual"></div>
+	<br>
+	<hr>
+	
+	<!--Author Analysis-->
+	<h2>Author Analysis</h2>
+	<form action="/getAuthor" method="get" id="author">
+		<label>Author name:</label> <input type="text" name="name"
+			placeholder="Input the author name..." /> <input type="submit"
+			value="Search" /> <input type="reset" value="Reset" />
+	</form>
+	<% if(result!=undefined){ %>
+	<table>
+		<thead>
+			<tr>
+				<th>Book Title</th>
+				<th>Revision Times</th>
+				<th>Revision History</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% let count = 0%>
+			<% for(let key in result){ %> 
+			<% count = count + 1%>
+			<tr>
+				<td><%=key%></td>
+				<td><%=result[key].length%></td>
+				<td><select name="time"> <% for(let i = 0; i <
+						result[key].length; i++){%>
+						<option><%=result[key][i]%></option> <%}%>
+				</select></td>
+			</tr>
+			<% }%> 
+			<% if(count == 0){ %>
+			<tr>
+				<td colspan=3 id="warning">No revision history found for input
+					user!</td>
+				</tr> <%}%>
+		</tbody>
+	</table>
+	<%}%>
+	<br>
+	<br>
+	<hr>
+
+
+	<!--User logo-->
+	<div class="popupimage" onmouseover="JQUERY.display()">
+		<img src="images/user.svg" id="personimage">
+		<form method="get" action="/logout">
+			<input type="submit" value="Log out" id="logout"
+				onmouseout="JQUERY.showIm()" />
+		</form>
+	</div>
+
+
+	<!--THIS IS THE MENU!-->
+	<div id="navi" class="overlay">
+		<a href="javascript:void(0)" style="" id="close" class="closebtn">&times;</a>
+		<div class="overlay-content">
+			<a href="/">HOME</a> <a href="/revision">Revision</a>
+		</div>
+	</div>
+	<button class="button" id="menu">
+		<span>Menu</span>
+	</button>
+	<!--END OF MENU-->
+</body>
+</html>
